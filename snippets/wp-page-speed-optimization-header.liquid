@@ -1,0 +1,15 @@
+{% if template contains 'index' or  template contains 'collection' or template contains 'product' %}
+
+    <script type="text/javascript">
+        window.wpErrors = window.wpErrors || [];
+	
+        window.onerror = function(error, url, line) {
+            window.wpErrors.push({
+                errorMessage : error,
+                lineNumber : line
+            });
+        };
+    </script>
+    <script src="https://app.speedboostr.io/lazyloadjs/9ae825-08.myshopify.com.js?v={{ 'now' | date: "%s"}}&shop={{shop.domain}}&page_type={{ template }}"></script>
+
+{% endif %}

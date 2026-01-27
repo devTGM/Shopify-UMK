@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",(()=>{!function(){const e=localStorage.getItem("recently-viewed"),t=document.querySelector(".js-product").dataset.productHandle;if(e){if(e.includes(t))return;const n=[t,...e.split(",")];return n.length>10&&n.pop(),void localStorage.setItem("recently-viewed",n.join(","))}localStorage.setItem("recently-viewed",t)}()}))

@@ -1,0 +1,5 @@
+/*
+Generated time: October 24, 2025 13:31
+This file was created by the app developer. Feel free to contact the original developer with any questions. It was minified (compressed) by AVADA. AVADA do NOT own this script.
+*/
+.map__wrapper{padding-block-start:100%;position:relative;z-index:1}@media screen and (min-width:990px){.map__wrapper{padding-block-start:calc(400 / var(--page-width) * 100%)}}.map__wrapper iframe{width:100%;height:100%;position:absolute;inset-block-start:0;inset-inline-start:0;z-index:1}

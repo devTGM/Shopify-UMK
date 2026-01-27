@@ -1,0 +1,4 @@
+function openTabFeed(evt,sectionId,tabName){const tabcontent=document.getElementsByClassName("products-feed__tabcontent--"+sectionId);for(let i=0;i<tabcontent.length;i++){tabcontent[i].style.display="none"}
+const tablinks=document.getElementsByClassName("products-feed__tablinks--"+sectionId);for(let i=0;i<tablinks.length;i++){tablinks[i].className=tablinks[i].className.replace(" active","")}
+document.getElementById(tabName).style.display="block";evt.currentTarget.className+=" active"}
+document.querySelectorAll("[data-default-open]").forEach(el=>{el.click()});window.addEventListener("shopify:section:load",()=>{document.querySelectorAll("[data-default-open]").forEach(el=>{el.click()})})

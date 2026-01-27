@@ -1,0 +1,5 @@
+/*
+Generated time: October 24, 2025 13:31
+This file was created by the app developer. Feel free to contact the original developer with any questions. It was minified (compressed) by AVADA. AVADA do NOT own this script.
+*/
+.marquee-tags{--gutter:2.4rem;position:relative;display:flex;overflow:hidden;max-width:10rem;margin-inline-start:auto;user-select:none;text-align:end;color:rgb(var(--color-tag-foreground));font-size:var(--font-size-static-sm);line-height:var(--line-height-static-sm);letter-spacing:var(--letter-spacing-medium);text-transform:uppercase}.marquee-tags__items{flex-shrink:0;display:flex;min-width:100%;--scroll-transform-translate-x:-100%;animation:scroll 6s linear infinite}[dir=rtl] .marquee-tags__items{--scroll-transform-translate-x:100%}.marquee-tags__items+.marquee-tags__items{margin-inline-start:var(--gutter)}.marquee-tags__item+.marquee-tags__item{margin-inline-start:var(--gutter)}@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(calc(var(--scroll-transform-translate-x) - var(--gutter)))}}
