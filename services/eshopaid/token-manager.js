@@ -34,7 +34,8 @@ class TokenManager {
         try {
             const url = `${config.eshopaid.serverUrl}${config.eshopaid.tokenEndpoint}`;
 
-            const response = await axios.get(url, {
+            // Use POST with empty body as required by eShopaid API
+            const response = await axios.post(url, '', {
                 headers: {
                     'SERVICE_METHODNAME': config.methods.GET_TOKEN,
                     'Username': config.eshopaid.username,
