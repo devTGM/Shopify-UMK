@@ -93,8 +93,9 @@
           {% if translated_badge contains 'missing' %}
             {% assign translated_badge = badge %}
           {% endif %}
+          {%- assign translated_badge_lower = translated_badge | downcase -%}
 
-          <span class="{{ badge_classes }}{% if translated_badge == 'Pre-order' or translated_badge == 'PRE-ORDER' %} product-card__badge--pre-order{% endif %}">
+          <span class="{{ badge_classes }}{% if translated_badge_lower == 'pre-order' or translated_badge_lower == 'preorder' %} product-card__badge--pre-order{% endif %}">
             {%- if badge contains discount_locale or badge contains discount_locale_ghost -%}
               {{ badge }}
             {%- else -%}
