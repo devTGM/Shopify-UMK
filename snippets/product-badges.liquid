@@ -47,7 +47,7 @@
       assign badges = badges | append: discount_locale_ghost | append: ','
     endif
 
-    if product.metafields.theme.preorder.value
+    if product.metafields.theme.preorder.value or product.metafields.custom.pre_order.value
       assign tag = 'product.preorder_badge' | t
       assign badges = badges | append: tag | append: ','
     endif
