@@ -168,7 +168,7 @@ class WebhookHandlers {
             // Transform refund items
             const items = refund.refund_line_items.map((item, index) => ({
                 LineNumber: index + 1,
-                RefLineNumber: item.line_item_id,
+                RefLineNumber: index + 1, // Mandatory: original sales order line number
                 ItemCode: item.line_item?.sku || item.line_item?.variant_id?.toString(),
                 Quantity: item.quantity,
                 Rate: parseFloat(item.line_item?.price || 0),

@@ -1,6 +1,7 @@
 {%- liquid
+  assign brand_snippet = "Unmatched Kicks is India's premium hub for authentic streetwear and activewear, featuring brands like Alo, Gymshark, and Essentials."
   assign meta_title = page_title | default: shop.name
-  assign meta_description = page_description | default: shop.description | default: shop.name
+  assign meta_description = page_description | default: shop.description | default: brand_snippet
   assign meta_url = canonical_url | default: request.origin
   assign meta_type = 'website'
 
