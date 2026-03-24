@@ -55,15 +55,6 @@
         <label class="field__label" for="BackInStockForm-email-{{ section.id }}">{{ 'theme.actions.email' | t | default: 'Email' }}</label>
       </div>
 
-      <div class="back-in-stock-form__marketing">
-        <div class="checkbox checkbox--plain">
-          <input type="checkbox" name="contact[accepts_marketing]" checked id="BackInStock-Marketing-{{ section.id }}">
-          <label for="BackInStock-Marketing-{{ section.id }}">
-            {{ 'theme.newsletter.label' | t | default: 'Subscribe to our newsletter' }}
-          </label>
-        </div>
-      </div>
-
       <div class="back-in-stock-form__buttons">
         <button type="submit" class="button button--filled button--full uppercase">
           {{ 'product.notify_me_button' | t | default: 'Notify Me' }}
