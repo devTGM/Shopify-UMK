@@ -5,16 +5,17 @@
   - section: {Object} section object.
 {% endcomment %}
 
-<div id="BackInStockForm-{{ section.id }}" class="back-in-stock-form hidden">
+<div id="BackInStockForm-{{ section.id }}" class="back-in-stock-form{% if product.selected_or_first_available_variant.available %} hidden{% endif %}">
   <div class="back-in-stock-form__content">
     <h3 class="back-in-stock-form__title h4">{{ 'product.notify_me_title' | t | default: 'Notify Me When Available' }}</h3>
     <p class="back-in-stock-form__text">{{ 'product.notify_me_text' | t | default: 'Register your email to get notified when this size is back in stock.' }}</p>
 
-    {%- form 'contact', id: 'BackInStockContactForm', class: 'contact-form', data-back-in-stock-form: '' -%}
+    {%- form 'customer', id: 'BackInStockForm', class: 'contact-form', data-back-in-stock-form: '' -%}
+      <input type="hidden" name="contact[tags]" value="Back In Stock, {{ product.title | escape }}, {{ product.selected_or_first_available_variant.title | escape }}">
       {%- if form.posted_successfully? -%}
         <div class="form-status form-status-list form__message" tabindex="-1" autofocus>
           {% render 'icon', icon_name: 'theme-check-circle' %}
-          {{ 'theme.actions.contact_form_success' | t | default: 'Thanks! We will notify you.' }}
+          {{ 'theme.actions.contact_form_success' | t | default: 'Thanks! We will notify you when this is back in stock.' }}
         </div>
       {%- elsif form.errors -%}
         <div class="form__message">
@@ -33,7 +34,8 @@
         </ul>
       {%- endif -%}
 
-      <input type="hidden" name="contact[product_title]" value="{{ product.title }}">
+      <input type="hidden" name="contact[note]" value="Notify me when {{ product.title | escape }} - {{ product.selected_or_first_available_variant.title | escape }} is back in stock. Product URL: {{ shop.url }}{{ product.url }}" data-back-in-stock-note>
+      <input type="hidden" name="contact[product_title]" value="{{ product.title | escape }}">
       <input type="hidden" name="contact[variant_id]" value="{{ product.selected_or_first_available_variant.id }}" data-back-in-stock-variant-id>
       <input type="hidden" name="contact[body]" value="Notify me when {{ product.title }} is back in stock. Product URL: {{ shop.url }}{{ product.url }}" data-back-in-stock-body>
       
@@ -51,6 +53,15 @@
           required
         >
         <label class="field__label" for="BackInStockForm-email-{{ section.id }}">{{ 'theme.actions.email' | t | default: 'Email' }}</label>
+      </div>
+
+      <div class="back-in-stock-form__marketing">
+        <div class="checkbox checkbox--plain">
+          <input type="checkbox" name="contact[accepts_marketing]" checked id="BackInStock-Marketing-{{ section.id }}">
+          <label for="BackInStock-Marketing-{{ section.id }}">
+            {{ 'theme.newsletter.label' | t | default: 'Subscribe to our newsletter' }}
+          </label>
+        </div>
       </div>
 
       <div class="back-in-stock-form__buttons">
@@ -94,6 +105,19 @@
 
   .back-in-stock-form .field {
     margin-bottom: 1rem;
+  }
+
+  .back-in-stock-form__marketing {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .back-in-stock-form__marketing .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    cursor: pointer;
   }
 
   .back-in-stock-form .button {
