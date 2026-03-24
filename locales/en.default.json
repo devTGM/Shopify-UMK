@@ -31,7 +31,10 @@
       "share_on": "Share on {{name}}",
       "show_all": "Show all",
       "start_shopping": "Start shopping",
-      "view": "View"
+      "view": "View",
+      "email": "Email",
+      "contact_form_success": "Thanks! We will notify you when this is back in stock.",
+      "contact_form_error": "Please adjust the error below"
     },
     "breadcrumb": {
       "label": "Breadcrumb",
@@ -98,6 +101,9 @@
     "duties_included": "Duties included.",
     "duties_and_taxes_included": "Duties and taxes included.",
     "price_regular": "Regular price",
+    "notify_me_title": "Notify Me When Available",
+    "notify_me_text": "Register your email to get notified when this size is back in stock.",
+    "notify_me_button": "Notify Me",
     "price_sale": "Sale price",
     "price_unit": "Unit price",
     "unit_price_separator": "per",
