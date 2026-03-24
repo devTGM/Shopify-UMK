@@ -19,6 +19,7 @@ class OrderService {
         const url = `${config.eshopaid.serverUrl}${config.eshopaid.processDataEndpoint}`;
 
         try {
+            console.log(`[OrderService] Making request with SERVICE_METHODNAME: ${method}`);
             const response = await axios.post(url, data, {
                 headers: {
                     'SERVICE_METHODNAME': method,

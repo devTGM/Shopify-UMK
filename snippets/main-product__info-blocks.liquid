@@ -358,6 +358,7 @@
         -%}
 
       {%- when 'buy_buttons' -%}
+        {%- render 'back-in-stock-form', product: product, section: section -%}
         {%- assign product_block_class = 'product__buy-buttons' | append: ' ' | append: product_block_class -%}
         <div class="{{ product_block_class }}" {{ block.shopify_attributes }}>
           {%- render 'main-product__buy-buttons',

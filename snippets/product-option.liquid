@@ -149,6 +149,12 @@
 
     <span class="{% if label_hidden %}visually-hidden{% endif %}">{{ value }}</span>
 
+    {%- if value.available == false -%}
+      <span class="product-option__bell-icon" data-back-in-stock-bell>
+        {% render 'icon', icon_name: 'theme-bell' %}
+      </span>
+    {%- endif -%}
+
     {% if label_unavailable %}
       {{ label_unavailable }}
     {% endif %}

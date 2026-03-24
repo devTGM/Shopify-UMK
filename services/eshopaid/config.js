@@ -39,7 +39,7 @@ const config = {
     MODIFY_CUSTOMER: 'ModifyCustomer',
     CREATE_SALES_ORDER: 'CreateSalesOrder',
     GET_ORDER_DETAIL: 'GetOrderDetail',
-    CREATE_RETURN_ORDER: 'CreateReturnOrder',
+    CREATE_RETURN_ORDER: 'PushReturnOrder',
     SET_ORDER_STATUS: 'SetOrderStatus',
   },
 };

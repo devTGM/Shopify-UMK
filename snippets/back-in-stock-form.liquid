@@ -1,0 +1,126 @@
+{% comment %}
+  Renders a back-in-stock notification form.
+  Accepts:
+  - product: {Object} product object.
+  - section: {Object} section object.
+{% endcomment %}
+
+<div id="BackInStockForm-{{ section.id }}" class="back-in-stock-form hidden">
+  <div class="back-in-stock-form__content">
+    <h3 class="back-in-stock-form__title h4">{{ 'product.notify_me_title' | t | default: 'Notify Me When Available' }}</h3>
+    <p class="back-in-stock-form__text">{{ 'product.notify_me_text' | t | default: 'Register your email to get notified when this size is back in stock.' }}</p>
+
+    {%- form 'contact', id: 'BackInStockContactForm', class: 'contact-form', data-back-in-stock-form: '' -%}
+      {%- if form.posted_successfully? -%}
+        <div class="form-status form-status-list form__message" tabindex="-1" autofocus>
+          {% render 'icon', icon_name: 'theme-check-circle' %}
+          {{ 'theme.actions.contact_form_success' | t | default: 'Thanks! We will notify you.' }}
+        </div>
+      {%- elsif form.errors -%}
+        <div class="form__message">
+          <h4 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+            {% render 'icon', icon_name: 'theme-error' %}
+            {{ 'theme.actions.contact_form_error' | t | default: 'Please adjust the error below' }}
+          </h4>
+        </div>
+        <ul class="form-status-list caption-large" role="list">
+          <li>
+            <a href="#ContactForm-email" class="link">
+              {{ form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email }}
+            </a>
+          </li>
+        </ul>
+      {%- endif -%}
+
+      <input type="hidden" name="contact[product_title]" value="{{ product.title }}">
+      <input type="hidden" name="contact[variant_id]" value="{{ product.selected_or_first_available_variant.id }}" data-back-in-stock-variant-id>
+      <input type="hidden" name="contact[body]" value="Notify me when {{ product.title }} is back in stock. Product URL: {{ shop.url }}{{ product.url }}" data-back-in-stock-body>
+      
+      <div class="field">
+        <input
+          type="email"
+          name="contact[email]"
+          id="BackInStockForm-email-{{ section.id }}"
+          class="field__input"
+          value="{{ customer.email }}"
+          spellcheck="false"
+          autocapitalize="off"
+          autocomplete="email"
+          placeholder="{{ 'theme.actions.email' | t | default: 'Email' }}"
+          required
+        >
+        <label class="field__label" for="BackInStockForm-email-{{ section.id }}">{{ 'theme.actions.email' | t | default: 'Email' }}</label>
+      </div>
+
+      <div class="back-in-stock-form__buttons">
+        <button type="submit" class="button button--filled button--full uppercase">
+          {{ 'product.notify_me_button' | t | default: 'Notify Me' }}
+        </button>
+      </div>
+    {%- endform -%}
+  </div>
+</div>
+
+<style>
+  .back-in-stock-form {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    border: 1px solid rgba(var(--color-foreground), 0.1);
+    border-radius: var(--inputs-radius);
+    background: rgba(var(--color-background), 0.05);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+  
+  .back-in-stock-form.hidden {
+    display: none;
+  }
+
+  .back-in-stock-form__title {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .back-in-stock-form__text {
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  .back-in-stock-form .field {
+    margin-bottom: 1rem;
+  }
+
+  .back-in-stock-form .button {
+    margin-top: 1rem;
+  }
+
+  /* Bell Icon Styling */
+  .product-option__bell-icon {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    color: rgba(var(--color-foreground), 0.6);
+  }
+
+  .product-option__input:checked + .product-option__label .product-option__bell-icon {
+    color: rgb(var(--color-foreground));
+  }
+
+  .product-option__label:hover .product-option__bell-icon {
+    color: rgb(var(--color-foreground));
+    animation: bell-shake 0.5s ease-in-out;
+  }
+
+  @keyframes bell-shake {
+    0%, 100% { transform: rotate(0); }
+    20%, 60% { transform: rotate(15deg); }
+    40%, 80% { transform: rotate(-15deg); }
+  }
+</style>
