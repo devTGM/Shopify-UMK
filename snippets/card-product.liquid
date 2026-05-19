@@ -424,10 +424,6 @@
           <span>{{ product_ref.title | default: product_title_placeholder }}</span>
         </a>
         {% render 'product-badges', product: product_ref %}
-        {%- comment -%} ✅ New Instant Ship badge {%- endcomment -%}
-{% if product_ref.metafields.custom.instant_ship == true %}
-  <span class="badge instant-ship">Instant Ship</span>
-{% endif %}
       </h3>
       <span class="product-card__price">
         {%- render 'price', product: product_ref -%}
