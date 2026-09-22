@@ -31,7 +31,7 @@
 
             {%- if recommendation.featured_image -%}
               <div class="media product-recommendations__item-media">
-                {%- render 'image', image: recommendation.featured_image, alt: recommendation.featured_image.alt | escape -%}
+                {%- render 'image', image: recommendation.featured_image, alt: recommendation.featured_image.alt -%}
               </div>
             {%- endif -%}
 
@@ -77,3 +77,15 @@
     </div>
   </div>
 </product-recommendations>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'image', image: recommendation.featured_image, alt: recommendation.featured_image.alt
+    | escape -%}"
+  to: "{%- render 'image', image: recommendation.featured_image, alt: recommendation.featured_image.alt
+    -%}"
+  position: 1730..1830
+{% endcomment %}
